@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/bundle.js"></script>
+</head>
+<body>
+    <h1>HERE ARE YOUR MANDATORY TASKS CITIZEN</h1>
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in items" v-bind:class="item.isCompleted ? 'completed':'not-completed'">
+                <span>{{ item.task}}</span>
+                <span v-if="item.isCompleted">COMPLETED</span>
+                <button v-if="!item.isCompleted" v-on:click="completeItem(index)">COMPLETE TASK</button>
+            </li>
+        </ul>
+        <form v-on:submit.prevent="saveNewItem">
+            <label for="new-item">Add new task!</label>
+            <input type="text" id="new-item" v-model="newItem" />
+            <input type="submit" value="save new item" />
+    </div>
+</body>
+</html>
